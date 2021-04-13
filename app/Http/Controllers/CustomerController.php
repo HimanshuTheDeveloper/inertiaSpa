@@ -55,7 +55,6 @@ class CustomerController extends Controller
             $customer->save();
        
             return $this->index();
-
     }
 
     /**

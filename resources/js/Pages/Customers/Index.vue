@@ -16,18 +16,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
+                        
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -64,23 +53,25 @@
     <h4 class="text-center">Customers</h4>
         <div class="container" v-for="customer in customers" :key="customers.name">
 
-
+        <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="card  d-flex  p-2 " style=" width: 18rem ;">
+                <div class="col d-flex flex-row">
+                    <div class="card p-2 " style=" width: 18rem ; margin :0 auto;">
                         <img src="https://img.pngio.com/customer-customer-png-368_412.png" class="w-25 card-img-top" alt="" style="margin: 0 auto;" />
                         <div class="card-body text-center">
                             <h5 class="card-title">Name - {{ customer.name }}</h5>
                             <p class="card-text">E-mail - {{ customer.email }}</p>
                             <p class="card-text">Address - {{ customer.address }}</p>
                             <p class="card-text">Created At - {{ customer.created_at }}</p>
-                            <a  @click="" class="btn btn-primary">Details</a>
+                            <button type="button"  class="btn btn-warning w-25">Edit</button>
+                            <button  type="button"  @click="delete_user(customer.CustomerId)"  class="btn btn-primary">Delete</button>
                             <!-- <inertia-link :href="$route('customers.show')" class="btn btn-primary">Create User</inertia-link> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
         </div>
     </div>
@@ -110,6 +101,11 @@
                 // this.closeModal();
                 
             },
+
+
+            delete_user : function(customerId) {
+                this.$inertia.delete('customers/{customerId}'); 
+            }
         }
     }
 </script>
