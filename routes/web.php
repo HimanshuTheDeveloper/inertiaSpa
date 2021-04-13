@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 
 Route::resource("test", TestController::class);
+Route::resource("customers", CustomerController::class);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])
     ->name('login')

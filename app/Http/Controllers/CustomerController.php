@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Test;
-use App\Models\User;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Validation\Rule;
+use App\Models\Customer;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-
-class TestController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,10 +15,13 @@ class TestController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Test2/index', [
-            
-            
-            'tests' => Test::all()
+        //
+        // $customers = Customer::all();
+        // return $customers;      
+        
+        
+        return Inertia::render('Customers/Index', [
+            'customers' => Customer::all()
         ]);
     }
 
@@ -37,6 +33,8 @@ class TestController extends Controller
     public function create()
     {
         //
+
+     
     }
 
     /**
@@ -48,6 +46,16 @@ class TestController extends Controller
     public function store(Request $request)
     {
         //
+        // return $request->get('name');
+           
+            $customer = new Customer();
+            $customer->name = $request->get('name');
+            $customer->email = $request->get('email');
+            $customer->address = $request->get('address');
+            $customer->save();
+       
+            return $this->index();
+
     }
 
     /**
